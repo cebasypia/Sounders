@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class SoundsController < ApplicationController
-  before_action :set_sound, only: [:show, :edit, :update, :destroy]
+  before_action :set_sound, only: %i[show edit update destroy]
 
   # GET /sounds
   # GET /sounds.json
@@ -9,8 +11,7 @@ class SoundsController < ApplicationController
 
   # GET /sounds/1
   # GET /sounds/1.json
-  def show
-  end
+  def show; end
 
   # GET /sounds/new
   def new
@@ -18,8 +19,7 @@ class SoundsController < ApplicationController
   end
 
   # GET /sounds/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /sounds
   # POST /sounds.json
@@ -62,13 +62,14 @@ class SoundsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_sound
-      @sound = Sound.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def sound_params
-      params.require(:sound).permit(:title)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_sound
+    @sound = Sound.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def sound_params
+    params.require(:sound).permit(:title, :file)
+  end
 end

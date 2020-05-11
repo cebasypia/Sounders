@@ -4,6 +4,9 @@
   <strong>Title:</strong>
   <%= @sound.title %>
 </p>
+  <audio controls>
+    <source src='<%= @sound.file %>'>
+  </audio>
 
 <%= link_to 'Edit', edit_sound_path(@sound) %> |
 <%= link_to 'Back', sounds_path %>
